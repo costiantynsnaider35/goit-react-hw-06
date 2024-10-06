@@ -17,13 +17,13 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: ["searchStr"],
+  blacklist: ["filters"],
 };
 
 export const store = configureStore({
   reducer: {
-    contact: persistReducer(persistConfig, contactReducer),
-    filter: filterReducer,
+    contacts: persistReducer(persistConfig, contactReducer),
+    filters: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -33,4 +33,4 @@ export const store = configureStore({
     }),
 });
 
-export let persistor = persistStore(store);
+export const persistor = persistStore(store);
